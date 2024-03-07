@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+
+% Essential Packages
+\usepackage{amsmath}    % Advanced math typesetting
+\usepackage[utf8]{inputenc} % Input encoding
+\usepackage{amsfonts}   % Math fonts
+\usepackage{amssymb}    % Math symbols
+\usepackage{geometry}   % Set page margins
+\usepackage{graphicx}   % Handle images
+\usepackage{hyperref}   % Hyperlinks
+\usepackage{lipsum}     % Dummy text
+
+% Page Margins
+\geometry{a4paper, margin=1in}
+
+% Metadata
+\title{Understanding Bose and Fermi-Dirac distributions in matter}
+\author{Piotr Kuterba}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+%\section*{Outline and Key Points with Formulas}
+
+
+\section{Combinatorial Background in Classical Statistical Mechanics}
+
+\subsection{Permutations and Combinations for Distinguishable Particles}
+\begin{itemize}
+    \item \textbf{Basic Permutations}: $N!$ for arranging $N$ distinguishable particles.
+    \item \textbf{Basic Combinations}: $\binom{g}{N}$ for distributing particles into $g$ states.
+\end{itemize}
+
+\subsection{Permutations with Identical Elements}
+\begin{itemize}
+    \item \textbf{Formula}: $\frac{N!}{n_1! \times n_2! \times \ldots}$ for $N$ particles with groups of identical elements.
+    \item \textbf{Example}: For 10 particles with 3 identical of one kind and 2 of another, the distinct arrangements are $\frac{10!}{3! \times 2!}$.
+\end{itemize}
+
+\subsection{Multisets and Combinations with Repetition}
+\begin{itemize}
+    \item \textbf{Combinations with Repetition}: $\binom{N + g - 1}{N}$ for distributing $N$ indistinguishable particles into $g$ states.
+\end{itemize}
+
+\subsection{Multiset Permutations in Boltzmann Statistics}
+\begin{itemize}
+    \item In classical Boltzmann statistics, the formula $\frac{N!}{N_1!N_2!\ldots N_n!}$ is used for counting the distinct permutations of a multiset. This approach is essential when considering systems with distinguishable particles distributed among various energy states, allowing for the calculation of the number of distinct arrangements or microstates in the system.
+    \item \textbf{Importance}: This formula reflects the backbone of classical Boltzmann statistics, especially when dealing with distinguishable particles and their arrangements in different energy states.
+\end{itemize}
+\section{Understanding of $\mu$ and $\Gamma$ spaces in statistical physics.}
+In statistical mechanics, the concepts of Gamma space, µ space, and occupation numbers are crucial for understanding the microscopic behavior of systems. This document aims to clarify these concepts and their interrelationships.
+
+\subsection{The Set \(\{n_i\}\)}
+The set \(\{n_i\}\) represents all occupation numbers in a system, where each \(n_i\) denotes the number of particles in a particular quantum state \(i\). This set describes a macrostate of the system, specifying the distribution of particles among various energy levels or quantum states.
+
+\subsection{Gamma Space (Phase Space)}
+In Gamma space, a single point represents a specific microstate of the entire system, detailing the exact positions and momenta of all particles. When considering all possible permutations of particles that correspond to the same macrostate (same \(\{n_i\}\)), this is represented by a volume in Gamma space. This volume encompasses all the microstates that have the same distribution of particles among energy levels but differ in the exact positions and momenta of the particles. The volume in Gamma space corresponding to a particular set of occupation numbers \(\{n_i\}\) is related to the entropy and thermodynamic probability of that macrostate.
+
+\subsection{µ Space}
+In µ space, each point represents the position and momentum of a single particle. For a system of \(N\) particles, there are \(N\) such points. The overall configuration in µ space remains essentially the same when considering permutations of particles among the same set of quantum states. This is because µ space focuses on individual particles, and permuting particles among the same set of states doesn't change the overall distribution in µ space.
+
+\subsection{Conclusion}
+In summary, Gamma space captures the entire system's state (microstate), while µ space focuses on individual particles. The set \(\{n_i\}\) describes the macrostate in terms of particle distribution among quantum states. Understanding these distinctions is crucial in statistical mechanics for analyzing and predicting the behavior of systems at a microscopic level.
+
+\section{Derivation of the Boltzmann Distribution}
+
+The derivation of the Boltzmann distribution from combinatorial principles involves considering the distribution of a fixed number of particles among various energy states and maximizing the number of microstates to find the most probable distribution.
+
+\subsection{Microstates and Macrostates}
+\begin{itemize}
+    \item A \textbf{microstate} is a specific arrangement of particles among energy levels.
+    \item A \textbf{macrostate} is characterized by macroscopic quantities like total energy, number of particles, and volume.
+    \item The goal is to find the distribution of particles that maximizes the number of microstates for a given macrostate.
+\end{itemize}
+
+\subsection{Combinatorial Basis}
+\begin{itemize}
+    \item Consider $N$ distinguishable particles and $g$ energy states.
+    \item The total number of microstates for a specific distribution is given by the multiset permutation formula: $\frac{N!}{N_1!N_2!\ldots N_g!}$, where $N_i$ is the number of particles in the $i^{th}$ energy state.
+    \item This formula accounts for the different arrangements of particles in each energy state while considering the indistinguishability of particles within the same state.
+\end{itemize}
+
+\subsection{Maximization of Entropy}
+\begin{itemize}
+    \item The entropy $S$ of a macrostate is related to the number of microstates $W$ by Boltzmann's formula: $S = k \ln(W)$.
+    \item To find the most probable distribution of particles, we maximize $S$ subject to the constraints of fixed total energy and particle number.
+    \item This maximization is typically performed using Lagrange multipliers, leading to a distribution that maximizes entropy.
+\end{itemize}
+
+\subsection{Derivation of the Boltzmann Factor}
+\begin{itemize}
+    \item The maximization process results in the Boltzmann factor, which gives the probability of a particle being in a state with energy $E$: $P(E) = \frac{e^{-\frac{E}{kT}}}{Z}$.
+    \item Here, $k$ is Boltzmann's constant, $T$ is the temperature, and $Z$ is the partition function, a normalization constant ensuring the probabilities sum to 1.
+\end{itemize}
+
+\subsection{Final Result: The Boltzmann Distribution}
+\begin{itemize}
+    \item The Boltzmann distribution describes the distribution of particles over energy states in thermal equilibrium.
+    \item It represents the most probable distribution under the constraints of constant total energy and particle number in the classical regime.
+\end{itemize}
+\section{Detailed Derivation of the Boltzmann Distribution}
+
+The Boltzmann distribution is derived by maximizing the number of microstates (W) for a given macrostate defined by total energy and number of particles.
+
+\subsection{Defining the System}
+Consider a system with $N$ distinguishable particles and $g$ distinct energy levels. Let $n_i$ be the number of particles in the $i^{th}$ energy state, and $E_i$ be the energy of the $i^{th}$ state.
+
+\subsection{Constraint Equations}
+The total number of particles $N$ and the total energy $E$ are conserved:
+\begin{align*}
+    N &= \sum_{i=1}^{g} n_i, \\
+    E &= \sum_{i=1}^{g} n_i E_i.
+\end{align*}
+
+\subsection{Counting Microstates}
+The number of microstates $W$ corresponding to a particular distribution of particles is given by:
+\begin{equation*}
+    W = \frac{N!}{n_1! n_2! \ldots n_g!}.
+\end{equation*}
+
+\subsection{Boltzmann's Entropy Formula}
+The entropy $S$ of the system is related to the number of microstates by Boltzmann's entropy formula:
+\begin{equation*}
+    S = k \ln(W).
+\end{equation*}
+
+\subsection{Maximizing Entropy}
+The most probable distribution of particles is the one that maximizes the entropy $S$. This is subject to the constraints of fixed $N$ and $E$. We use Lagrange multipliers $\alpha$ and $\beta$ for these constraints and maximize the following expression:
+\begin{equation*}
+    \mathcal{L} = k \ln(W) - \alpha \left( \sum_{i=1}^{g} n_i - N \right) - \beta \left( \sum_{i=1}^{g} n_i E_i - E \right).
+\end{equation*}
+
+\subsection{Solving the Maximization Problem}
+The maximization leads to the determination of the probabilities of each energy state, resulting in the Boltzmann factor. Differentiating $\mathcal{L}$ with respect to each $n_i$ and setting it to zero gives:
+\begin{equation*}
+    e^{-\beta E_i} = \frac{n_i}{Z},
+\end{equation*}
+where $Z$ is the partition function defined as $Z = \sum_{i=1}^{g} e^{-\beta E_i}$.
+
+\subsection{Interpreting the Lagrange Multipliers}
+The parameter $\beta$ is interpreted as $\frac{1}{kT}$, where $T$ is the temperature.
+
+\subsection{The Boltzmann Distribution}
+The final form of the Boltzmann distribution is thus obtained:
+\begin{equation*}
+    n_i = \frac{e^{-E_i/(kT)}}{Z}.
+\end{equation*}
+
+This distribution describes the probability of finding a particle in the $i^{th}$ energy state in a system at thermal equilibrium.
+
+\subsection{ Boson Statistics}
+\begin{itemize}
+    \item \textbf{Total States}: $\binom{N + g - 1}{N}$
+    \item \textbf{Behavior}:
+    \begin{itemize}
+        \item The number of states increases significantly with $N$, especially as $N$ gets large compared to $g$.
+        \item Multiple occupancy of the same state is allowed, leading to a vastly greater number of configurations than for fermions.
+    \end{itemize}
+\end{itemize}
+
+\subsection{ Combining Two Distinguishable Fermi Liquids}
+\begin{itemize}
+    \item \textbf{Formulation with $g_A$ and $g_B$}:
+    \begin{itemize}
+        \item Use $g_A$ and $g_B$ when the energy states in each Fermi liquid are different.
+        \item Total Configurations: $\left( \binom{g_A}{N_A} \times \binom{g_B}{N_B} \right) \times \frac{(N_A + N_B)!}{N_A! \times N_B!}$
+        \item \textbf{Behavior}:
+        \begin{itemize}
+            \item As $N_A$ and $N_B$ vary, the configurations change, reflecting the unique distributions in each liquid.
+            \item The permutations of spin states $\left( \frac{(N_A + N_B)!}{N_A! \times N_B!} \right)$ increase significantly with the total number of particles $N$.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Simplification with a Common $g$}:
+    \begin{itemize}
+        \item Use a common $g$ if the energy states are the same in both liquids.
+        \item Simplifies to a single binomial coefficient, but less common in practice due to the distinct nature of different Fermi liquids.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Understanding the Behavior of Formulas}
+\begin{itemize}
+    \item \textbf{Impact of $g$, $N_A$, and $N_B$ Sizes}:
+    \begin{itemize}
+        \item Increasing $g$ (the number of states) with a fixed $N$ (number of particles) typically increases the number of possible configurations. The system has more "room" to distribute particles.
+        \item For two distinguishable Fermi liquids, the respective sizes of $g_A$, $g_B$, $N_A$, and $N_B$ will dictate the complexity and magnitude of the total number of configurations.
+        \item The factorial term $\frac{(N_A + N_B)!}{N_A! \times N_B!}$, which accounts for the permutations of particles with spin states, grows rapidly as $N_A$ and $N_B$ increase.
+    \end{itemize}
+    \item \textbf{Applicability and Implications}:
+    \begin{itemize}
+        \item In real-world scenarios, such as in solid-state physics, these statistics and configurations play a crucial role in understanding electronic properties, heat capacity, magnetic properties, and other quantum phenomena in materials.
+        \item The choice between using $g_A$ and $g_B$ or a single $g$ depends on the physical system being studied.
+    \end{itemize}
+\end{itemize}
+
+\section{Combinatorial Background in Statistical Mechanics}
+
+\subsection{Permutations and Combinations for Distinguishable Particles}
+\begin{itemize}
+    \item \textbf{Basic Permutations}: $N!$ for arranging $N$ distinguishable particles.
+    \item \textbf{Basic Combinations}: $\binom{g}{N}$ for distributing particles into $g$ states.
+\end{itemize}
+
+\subsection{Permutations with Identical Elements}
+\begin{itemize}
+    \item \textbf{Formula}: $\frac{N!}{n_1! \times n_2! \times \ldots}$ for $N$ particles with groups of identical elements.
+    \item \textbf{Example}: For 10 particles with 3 identical of one kind and 2 of another, the distinct arrangements are $\frac{10!}{3! \times 2!}$.
+\end{itemize}
+
+\subsection{Multisets and Combinations with Repetition}
+\begin{itemize}
+    \item \textbf{Combinations with Repetition}: $\binom{N + g - 1}{N}$ for distributing $N$ indistinguishable particles into $g$ states.
+\end{itemize}
+
+\subsection{Statistical Mechanics Perspective}
+\begin{itemize}
+    \item \textbf{Maxwell-Boltzmann Statistics}: For systems of distinguishable particles, assuming independent occupancy of states.
+    \item \textbf{Quantum Statistics}: Bose-Einstein for bosons (multiple occupancy allowed) and Fermi-Dirac for fermions (subject to Pauli Exclusion Principle).
+\end{itemize}
+
+\section{Application to Physical Systems}
+\begin{itemize}
+    \item \textbf{Gases}: Maxwell-Boltzmann statistics describe particle distributions in ideal gases.
+    \item \textbf{Solids}: Fermi-Dirac statistics for electrons in solids; Bose-Einstein for bosons like photons or phonons.
+\end{itemize}
+
+\end{document}
