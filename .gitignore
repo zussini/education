@@ -1,9 +1,9 @@
  # exclude everything except directory foo/bar
 #!/foo
 #/foo/*
-#media/
-#__pycache__/
-#combinatorics/media/
-#combinatorics/__pycache__/
+!\**/media/
+!\**/__pycache__/
+#/combinatorics/media/*
+#/combinatorics/__pycache__/*
 /sp.*
 !/sp.tex
