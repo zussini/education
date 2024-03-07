@@ -5,5 +5,5 @@ media/
 __pycache__/
 combinatorics/media/
 combinatorics/__pycache__/
-/sp.*
+!/sp.*
 /sp.tex
