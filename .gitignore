@@ -7,3 +7,4 @@
 !/combinatorics/__pycache__/*
 !/sp.*
 /sp.tex
+/combinatorics/.py
